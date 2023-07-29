@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 const MyPost = () => {
     const [text, setText] = useState("");
     const [resultText, setResultText] = useState("");
+    const [resultScore, setResultScore] = useState("");
 
     const clearText = () => {
         setText("");
         setResultText("");
     };
 
-    const getResultText = (e) => {
+    const getResult = (e) => {
         e.preventDefault();
         const requestOptions = {
             method: "POST",
@@ -18,7 +19,10 @@ const MyPost = () => {
         };
         fetch("/sentiment", requestOptions)
             .then((res) => res.json())
-            .then((data) => setResultText(data.sentiment_label))
+            .then((data) => {
+                setResultText(data.sentiment_label);
+                setResultScore(data.compound_score);
+            })
             .catch((err) => {
                 console.log("Something went wrong NASA!");
                 console.error(err);
@@ -28,7 +32,7 @@ const MyPost = () => {
     return (
         <article>
             <h2>POST request</h2>
-            <form onSubmit={getResultText}>
+            <form onSubmit={getResult}>
                 <div>
                     <input
                         type="text"
@@ -45,6 +49,7 @@ const MyPost = () => {
                 </div>
             </form>
             <p>{resultText}</p>
+            <p>{resultScore}</p>
         </article>
     );
 };
