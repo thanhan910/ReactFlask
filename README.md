@@ -54,7 +54,7 @@ npm start
 
 1. Create React app
 ```bash
-npx create-react-app my-app
+npx create-react-app <app-name>
 ```
 2. Create Flask app
 ```bash
