@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import MyButton from "./components/MyButton";
+import MyPost from "./components/MyPost";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <MyButton />
+        <MyPost />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
