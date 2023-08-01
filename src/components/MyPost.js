@@ -17,7 +17,7 @@ const MyPost = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ text }),
         };
-        fetch("/sentiment", requestOptions)
+        fetch("/api/sentiment", requestOptions)
             .then((res) => res.json())
             .then((data) => {
                 setResultText(data.sentiment_label);
@@ -31,7 +31,7 @@ const MyPost = () => {
 
     return (
         <article>
-            <h2>POST request</h2>
+            <h2>Test POST request</h2>
             <form onSubmit={getResult}>
                 <div>
                     <input
